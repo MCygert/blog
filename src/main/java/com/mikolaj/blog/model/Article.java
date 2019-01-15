@@ -14,6 +14,7 @@ public class Article {
     private String text;
     private Type type;
     private LocalDate created;
+    private String title;
 
 
     public Article(String text, Type type, LocalDate date) throws ParseException {
@@ -29,7 +30,16 @@ public class Article {
                 ", text='" + text + '\'' +
                 ", type=" + type +
                 ", created=" + created +
+                ", title='" + title + '\'' +
                 '}';
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Long getId() {
