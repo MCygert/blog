@@ -19,7 +19,7 @@ public class ArticleController {
         this.articleRepository = articleRepository;
     }
 
-    @GetMapping("/articles/{type}")
+    @GetMapping("/articles")
     public List<Article> getAllArticles () {
         return articleRepository.findAll();
     }
