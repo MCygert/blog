@@ -2,12 +2,12 @@ package com.mikolaj.blog.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class EntryController {
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("title", "Hello World!");
         return "home";
