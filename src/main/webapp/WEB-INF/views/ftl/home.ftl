@@ -11,6 +11,16 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm">
+        <a href="/articles?type=TECH"><h1>Tech Articles</h1></a>
+    </div>
+    <div class="col-sm">
+        <a href="/articles?type=LIFE"><h1>Life Articles</h1></a>
+    </div>
+    </div>
+</div>
 
-<a href="/articles?type=TECH"><h1>Tech Articles</h1></a> <a href="/articles?type=LIFE"><h1>Life Articles</h1></a>
+
 <#include "static/footer.ftl">
