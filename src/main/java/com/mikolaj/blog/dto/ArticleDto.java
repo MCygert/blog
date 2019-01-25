@@ -28,7 +28,7 @@ public class ArticleDto {
         return modelMapper.map(article, ArticleDto.class);
     }
 
-    List<ArticleDto> getAllArticlesByType(Type type) {
+   public List<ArticleDto> getAllArticlesByType(Type type) {
         List<Article> articles = articleRepository.findAllByType(type);
         return articles.stream().map(this::convertToDto)
                 .collect(Collectors.toList());

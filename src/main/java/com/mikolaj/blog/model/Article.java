@@ -16,11 +16,11 @@ public class Article {
     private LocalDate created;
     private String title;
 
-
-    public Article(String text, Type type, LocalDate date) throws ParseException {
+    public Article(String text, Type type, LocalDate created, String title) {
         this.text = text;
         this.type = type;
-        this.created = date;
+        this.created = created;
+        this.title = title;
     }
 
     @Override
