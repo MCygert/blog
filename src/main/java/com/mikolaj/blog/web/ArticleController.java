@@ -16,7 +16,6 @@ import java.util.List;
 @Controller
 public class ArticleController {
 
-    @Autowired
     private final ArticleDto articleDto;
 
     public ArticleController(ArticleDto articleDto) {
@@ -31,11 +30,9 @@ public class ArticleController {
         return "articles";
     }
 
-    @GetMapping("/articles")
+    @GetMapping("/article")
     public String getSingleArticle(Model model, @RequestParam(value = "id") long id) {
-
-
-
+        model.addAttribute("article", articleDto.getArticleDtoById(id));
         return "article";
     }
 
