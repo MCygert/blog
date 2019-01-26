@@ -3,14 +3,18 @@ package com.mikolaj.blog.dto;
 import com.mikolaj.blog.model.Article;
 import com.mikolaj.blog.model.Type;
 import com.mikolaj.blog.repository.ArticleRepository;
-import org.hibernate.service.spi.InjectService;
+
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Component
 public class ArticleDto {
     private Long id;
     private String text;
@@ -18,7 +22,8 @@ public class ArticleDto {
     private LocalDate created;
     private String title;
 
-    @Autowired
+    final private Logger logger = LoggerFactory.getLogger(ArticleDto.class);
+   @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
@@ -28,8 +33,20 @@ public class ArticleDto {
         return modelMapper.map(article, ArticleDto.class);
     }
 
-    List<ArticleDto> getAllArticlesByType(Type type) {
+    public ArticleDto getArticleDtoById(Long id) {
+       Optional<Article> article = articleRepository.findById(id);
+        if (article.isPresent()) {
+            logger.info("Getting article with {}", id);
+            return convertToDto(article.get());
+        }
+        logger.info("There isn't article with {}", id);
+        // TODO: Here shouldn't be null, make empty article or find another way of fixing it
+        return null;
+    }
+
+   public List<ArticleDto> getAllArticlesByType(Type type) {
         List<Article> articles = articleRepository.findAllByType(type);
+        logger.info("Getting all articles from {} type ", type);
         return articles.stream().map(this::convertToDto)
                 .collect(Collectors.toList());
     }
