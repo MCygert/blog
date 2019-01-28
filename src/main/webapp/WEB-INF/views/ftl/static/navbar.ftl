@@ -14,6 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/article/form">Add article</a>
+            </li>
         </ul>
     </div>
 </nav>

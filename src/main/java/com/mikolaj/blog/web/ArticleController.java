@@ -37,4 +37,9 @@ public class ArticleController {
         return "article";
     }
 
+    @GetMapping("/article/form")
+    public String addArticle(Model model) {
+        return "form";
+    }
+
 }
