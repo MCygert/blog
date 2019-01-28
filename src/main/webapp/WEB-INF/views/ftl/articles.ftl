@@ -6,7 +6,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
             <div class="jumbotron">
-                <a href="/article?id="${article.id}><h1 class="display-4">${article.title}</h1></a>
+                <a href="/article?id=${article.id}"><h1 class="display-4">${article.title}</h1></a>
                 <hr class="my-4">
                 <span class="badge badge-pill badge-info">${article.created}</span>
             </div>
