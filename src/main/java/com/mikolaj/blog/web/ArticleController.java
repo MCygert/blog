@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -16,7 +17,6 @@ import java.util.List;
 @Controller
 public class ArticleController {
 
-    @Autowired
     private final ArticleDto articleDto;
 
     public ArticleController(ArticleDto articleDto) {
@@ -31,11 +31,9 @@ public class ArticleController {
         return "articles";
     }
 
-    @GetMapping("/articles")
-    public String getSingleArticle(Model model, @RequestParam(value = "id") long id) {
-
-
-
+    @GetMapping("/article")
+    public String getSingleArticle(Model model, @RequestParam("id") long id) {
+        model.addAttribute("article", articleDto.getArticleDtoById(id));
         return "article";
     }
 

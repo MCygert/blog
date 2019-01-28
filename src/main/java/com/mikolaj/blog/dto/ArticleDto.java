@@ -23,11 +23,16 @@ public class ArticleDto {
     private String title;
 
     final private Logger logger = LoggerFactory.getLogger(ArticleDto.class);
-   @Autowired
-    private ModelMapper modelMapper;
+
+
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
-    private ArticleRepository articleRepository;
+    private  ArticleRepository articleRepository;
+
+    public ArticleDto(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
 
     private ArticleDto convertToDto(Article article) {
         return modelMapper.map(article, ArticleDto.class);
@@ -49,6 +54,9 @@ public class ArticleDto {
         logger.info("Getting all articles from {} type ", type);
         return articles.stream().map(this::convertToDto)
                 .collect(Collectors.toList());
+    }
+
+    public ArticleDto() {
     }
 
     public Long getId() {
