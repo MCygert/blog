@@ -1,5 +1,6 @@
 package com.mikolaj.blog.dto;
 
+import com.mikolaj.blog.component.FormArticle;
 import com.mikolaj.blog.model.Article;
 import com.mikolaj.blog.model.Type;
 import com.mikolaj.blog.repository.ArticleRepository;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 @Component
 public class ArticleDto {
     private Long id;
@@ -24,11 +26,11 @@ public class ArticleDto {
 
     final private Logger logger = LoggerFactory.getLogger(ArticleDto.class);
 
-
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
-    private  ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
 
     public ArticleDto(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
@@ -39,7 +41,7 @@ public class ArticleDto {
     }
 
     public ArticleDto getArticleDtoById(Long id) {
-       Optional<Article> article = articleRepository.findById(id);
+        Optional<Article> article = articleRepository.findById(id);
         if (article.isPresent()) {
             logger.info("Getting article with {}", id);
             return convertToDto(article.get());
@@ -49,11 +51,32 @@ public class ArticleDto {
         return null;
     }
 
-   public List<ArticleDto> getAllArticlesByType(Type type) {
+    public List<ArticleDto> getAllArticlesByType(Type type) {
         List<Article> articles = articleRepository.findAllByType(type);
         logger.info("Getting all articles from {} type ", type);
         return articles.stream().map(this::convertToDto)
                 .collect(Collectors.toList());
+    }
+
+    public ArticleDto mapFormArticleToDto(FormArticle formArticle) {
+        ArticleDto articleDto = new ArticleDto();
+        articleDto.setCreated(LocalDate.now());
+        articleDto.setText(formArticle.getText());
+        articleDto.setTitle(formArticle.getTitle());
+        articleDto.setType(checkWhichTypeOfArticle(formArticle.getTechType()));
+        return articleDto;
+    }
+
+    private Type checkWhichTypeOfArticle(String type) {
+        if ("TECH".equals(type)) {
+            return Type.TECH;
+        }
+        return Type.LIFE;
+    }
+
+    private Article convertToEntity(ArticleDto articleDto) {
+        Article article = modelMapper.map(articleDto, Article.class);
+        return article;
     }
 
     public ArticleDto() {
