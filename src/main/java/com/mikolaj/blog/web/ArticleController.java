@@ -44,6 +44,7 @@ public class ArticleController {
 
     @PostMapping("/article/form")
     public String postArticle(@ModelAttribute FormArticle formArticle) {
+         articleDto.saveArticleDto(articleDto.mapFormArticleToDto(formArticle));
         return "result";
     }
 

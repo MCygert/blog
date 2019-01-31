@@ -79,6 +79,11 @@ public class ArticleDto {
         return article;
     }
 
+    public void saveArticleDto(ArticleDto articleDto) {
+        Article article = articleDto.convertToEntity(articleDto);
+        articleRepository.save(article);
+    }
+
     public ArticleDto() {
     }
 
