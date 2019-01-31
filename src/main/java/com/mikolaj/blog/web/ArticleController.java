@@ -1,14 +1,12 @@
 package com.mikolaj.blog.web;
 
 import com.mikolaj.blog.dto.ArticleDto;
-import com.mikolaj.blog.model.Article;
 import com.mikolaj.blog.model.Type;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -38,8 +36,13 @@ public class ArticleController {
     }
 
     @GetMapping("/article/form")
-    public String addArticle(Model model) {
+    public String getArticleForm(Model model) {
         return "form";
     }
 
+    @PostMapping("/article/form")
+    public String postArticle(Model model) {
+        return "result";
+    }
+    
 }
