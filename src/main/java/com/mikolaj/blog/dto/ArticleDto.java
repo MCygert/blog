@@ -77,12 +77,16 @@ public class ArticleDto {
     }
 
     private Article convertToEntity(ArticleDto articleDto) {
-//        Article article = modelMapper.map(articleDto, Article.class);
+        Article article = getArticle(articleDto);
+        return article;
+    }
+
+    private Article getArticle(ArticleDto articleDto) {
         Article article = new Article();
         article.setCreated(articleDto.getCreated());
         article.setText(articleDto.getText());
-        article.setTitle(articleDto.getTitle());
         article.setType(articleDto.getType());
+        article.setTitle(articleDto.getTitle());
         return article;
     }
 
