@@ -1,4 +1,4 @@
-package com.mikolaj.blog.component;
+package com.mikolaj.blog.dto;
 
 import org.springframework.stereotype.Component;
 
