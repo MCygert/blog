@@ -1,16 +1,17 @@
 package com.mikolaj.blog.web;
 
+import com.mikolaj.blog.component.FormArticle;
 import com.mikolaj.blog.dto.ArticleDto;
-import com.mikolaj.blog.model.Article;
 import com.mikolaj.blog.model.Type;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -35,6 +36,17 @@ public class ArticleController {
     public String getSingleArticle(Model model, @RequestParam("id") long id) {
         model.addAttribute("article", articleDto.getArticleDtoById(id));
         return "article";
+    }
+
+    @GetMapping("/article/form")
+    public String getArticleForm(Model model) {
+        return "form";
+    }
+
+    @PostMapping("/article/form")
+    public String postArticle(@Valid @ModelAttribute("formArticle") FormArticle formArticle) {
+         articleDto.saveArticleDto(articleDto.mapFormArticleToDto(formArticle));
+        return "result";
     }
 
 }
