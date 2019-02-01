@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class ArticleDto {
+    @Id
     private Long id;
     private String text;
     private Type type;
@@ -75,7 +77,12 @@ public class ArticleDto {
     }
 
     private Article convertToEntity(ArticleDto articleDto) {
-        Article article = modelMapper.map(articleDto, Article.class);
+//        Article article = modelMapper.map(articleDto, Article.class);
+        Article article = new Article();
+        article.setCreated(articleDto.getCreated());
+        article.setText(articleDto.getText());
+        article.setTitle(articleDto.getTitle());
+        article.setType(articleDto.getType());
         return article;
     }
 

@@ -1,6 +1,7 @@
 package com.mikolaj.blog.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.text.ParseException;
 import java.time.LocalDate;
 
@@ -10,6 +11,7 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
     private Long id;
     private String text;
     private Type type;
