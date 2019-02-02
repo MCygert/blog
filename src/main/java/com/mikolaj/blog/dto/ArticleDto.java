@@ -1,6 +1,5 @@
 package com.mikolaj.blog.dto;
 
-import com.mikolaj.blog.component.FormArticle;
 import com.mikolaj.blog.model.Article;
 import com.mikolaj.blog.model.Type;
 import com.mikolaj.blog.repository.ArticleRepository;
