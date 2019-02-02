@@ -3,11 +3,11 @@
 <form method="post" action="/article/update">
     <div class="form-group">
         <label for="title">Title</label>
-        <input class="form-control" type="text" placeholder="Default input" name="title" id="title">
+        <input class="form-control" type="text" placeholder="Default input" name="title" id="title" value="${article.title}">
     </div>
     <div class="form-group">
         <label for="title">text</label>
-        <input class="form-control" type="text" placeholder="Default input" name="text"  id="title">
+        <input class="form-control" type="text" placeholder="Default input" name="text"  id="title" value="${article.text}">
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="techType" value="LIFE">
