@@ -10,4 +10,4 @@
     <div class="col-sm-3"></div>
 </div>
 
-<#include "static/footer.ftl">
+<#include "static/footer.ftl">ń
