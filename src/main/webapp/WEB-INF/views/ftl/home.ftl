@@ -1,7 +1,7 @@
 <#include "static/header.ftl">
 <#include "static/navbar.ftl">
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('static/img/home-bg.jpg')">
+  <header class="masthead" style="background-image: url('https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-clean-blog/master/img/home-bg.jpg');">
       <div class="overlay"></div>
       <div class="container">
           <div class="row">
