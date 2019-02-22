@@ -1,5 +1,5 @@
-<#include "static/header.ftl">
-<#include "static/navbar.ftl">
+<#include "header.ftl">
+<#include "navbar.ftl">
 <form method="post" action="/article/update">
     <div class="form-group">
         <label for="title">Title</label>
@@ -20,4 +20,4 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-<#include "static/footer.ftl">
+<#include "footer.ftl">

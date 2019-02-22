@@ -1,5 +1,5 @@
-<#include "static/header.ftl">
-<#include "static/navbar.ftl">
+<#include "header.ftl">
+<#include "navbar.ftl">
 
 <#list articles as article>
 <div class="row">
@@ -16,4 +16,4 @@
 </#list>
 
 
-<#include "static/footer.ftl">
+<#include "footer.ftl">
